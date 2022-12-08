@@ -1,6 +1,6 @@
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import './PdfPage.css';
-import samplePDF from './test.pdf';
+import samplePDF from './Test2.pdf';
 import { useState } from 'react';
 
 export default function PdfCard() {
@@ -12,21 +12,27 @@ export default function PdfCard() {
   }
   return (
     <>
-      
-        <Document className={'PDFDocument'} file={samplePDF} onLoadSuccess={onDocumentLoadSuccess}>
+      <div id="ResumeContainer" className="mt-4">
+        <Document
+          
+          className={"PDFDocument"}
+          file={samplePDF}
+          onLoadSuccess={onDocumentLoadSuccess}
+        >
           {Array.apply(null, Array(numPages))
             .map((x, i) => i + 1)
-            .map(page => (
+            .map((page) => (
               <Page
+
+                renderMode='svg'
                 key={page}
-                // className={'PDFPage PDFPageOne'}
+                className={"PDFPage PDFPageOne"}
                 pageNumber={page}
                 renderTextLayer={false}
                 renderInteractiveForms={false}
               />
             ))}
         </Document>
-      
-    </>
-  );
-}
+      </div>
+    </>); }
+
